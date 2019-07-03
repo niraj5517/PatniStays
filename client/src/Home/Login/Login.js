@@ -2,49 +2,61 @@ import React, { Component } from 'react';
 import { Button ,Image, Modal, Checkbox } from 'semantic-ui-react';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
-// import { METHODS } from 'http';
+import {valPhone} from './../../Validate.js';
 
 class Login extends Component {
   constructor() {
-    super()
+    super();
     this.close = this.close.bind(this);
     this.aman = this.aman.bind(this);
+    this.handleMobile=this.handleMobile.bind(this);
+    this.handleChangeCheck=this.handleChangeCheck.bind(this);
   }
-  state = { open: false, signInUp: 2 }
-  //signInUp : 0 for login , 1 for SignUp
+  state = { open: false, signInUp: 2, checked: false, mob: '' }
   
+  handleMobile(e) {
+    console.log('mobile');
+    console.log(e.target.controls);
+    this.setState({ mob: e.target.value });
+    console.log(this.state.mob);
+
+    if(valPhone(e.target.value)){
+      console.log('true');
+    }
+    else{
+      console.log('false');
+    }
+  }
+
+  handleChangeCheck(e){
+    this.setState({
+      checked:!this.state.checked
+    });
+  }
+
   aman() {
     this.setState({signInUp: 2});
   }
 
-    show = dimmer => () => {
+  show = dimmer => () => {
             this.setState({ dimmer, open: true})
-        
-        // if (this.state.signInUp === 1) {
-        //     this.setState({open: false, otherOpen: false })
-        // }
-        // else {
-            
-        // }
-    }
+  }
     
-    close = (event) => {
-
+  close = (event) => {
         this.setState({ open: false})
-        console.log(event.target.value);
-    }
+  }
   
   processed = () => {
     this.setState({ open: false,signInUp:1})
   }
-    closeAll = (event) => {
+  
+  closeAll = (event) => {
+    this.setState({ open: false, otherOpen:false })
+  }
 
-        this.setState({ open: false, otherOpen:false })
-        console.log(event.target.value);
-    }
-    closed = () => {
-        this.setState({ open: false, otherOpen:false })
-    }
+  closed = () => {
+    this.setState({ open: false, otherOpen:false })
+  }
     
 
   render() {
@@ -62,28 +74,21 @@ class Login extends Component {
           <Modal.Content image>
             <Image wrapped size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' />
                 <Modal.Description>
-                {/* <Header>Default Profile Image</Header> */}
                 
                 <div style={{float:'right',overlayY:'auto'}}>
                 <div className="field">
                     <label>Enter your mobile number:</label>
-                    <input className="form-control" placeholder="Mobile Number" required/>
+                    <input type="tel" pattern="[1-9]{1}[0-9]{9}" value={this.state.mob} onChange={this.handleMobile} maxlength="10" className="form-control" placeholder="Mobile Number" required />
                 </div>
-                {/* <div className="field">
-                    <label>Last Name</label>
-                    <input placeholder="Last Name" />
-                </div> */}
+              
                 <div className="field">
                     <div className="ui checkbox">
-                    {/* <input type="checkbox" id="checkboxTick" class="hidden" readonly="" tabindex="0" /> */}
-                     
+                    
                     <br/><br/>
-                    <Checkbox label='I agree to the Terms and Conditions' />
-                    {/* <label for="checkboxTick">I agree to the Terms and Conditions.</label> */}
+                    <Checkbox onChange={this.handleChangeCheck} label='I agree to the Terms and Conditions' />
                     </div>
                 </div>
                 </div>
-                {/* <button type="submit" className="ui button">Submit</button> */}
                 
                 </Modal.Description>
           </Modal.Content>
@@ -94,6 +99,7 @@ class Login extends Component {
               Close
             </Button>
             <Button
+              disabled={!this.state.checked}
               positive
               icon='checkmark'
               labelPosition='right'
@@ -105,16 +111,6 @@ class Login extends Component {
         </Modal>
             </form>
             
-
-
-
-
-
-
-
-
-
-
             <form className="ui form">
           {this.state.signInUp === 0 ? <SignIn condition={this.aman} /> : null}
           

@@ -47,7 +47,7 @@ export default class SignIn extends Component {
                     <div >
                 <div className="field">
                     <label>Enter your Password:</label>
-                    <input className="form-control" placeholder="Password" />
+                    <input type="password" className="form-control" placeholder="Password" />
                 </div>
                                   
                 <div className="field">

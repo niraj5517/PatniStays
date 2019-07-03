@@ -47,17 +47,17 @@ export default class SignUp extends Component {
                 <div>
                 <div className="field">
                     <label>Enter your Email:</label>
-                    <input className="form-control" placeholder="Email" />
+                    <input type="email" className="form-control" placeholder="Email" />
                 </div>
                 <br/>
                 <div className="field">
                     <label>Enter your Password:</label>
-                    <input className="form-control" placeholder="Password" />
+                    <input type="password" className="form-control" placeholder="Password" />
                 </div>
                 <br/>
                 <div className="field">
                     <label>Enter your Password Again:</label>
-                    <input className="form-control" placeholder="Password Again" />
+                    <input type="password" className="form-control" placeholder="Password Again" />
                 </div>
                                   
                 <div className="field">
