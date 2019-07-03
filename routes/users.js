@@ -1,6 +1,6 @@
 var express = require('express')
 var router = express.Router()
-var connection = require('./dbconfig');
+var connection = require('../config/dbconfig');
 
 router.get('/', function (req, res) {
    

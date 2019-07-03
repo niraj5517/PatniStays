@@ -4,7 +4,7 @@ var port =process.env.PORT||4000;
 var bodyParser = require('body-parser')
 var cors = require('cors') 
 
-var users = require('./users')
+var users = require('./routes/users')
 
 // database config file to set connection
 // var connection = require('./dbconfig');
