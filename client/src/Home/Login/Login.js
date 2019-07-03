@@ -74,6 +74,11 @@ class Login extends Component {
           <Modal.Content image>
             <Image wrapped size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' />
                 <Modal.Description>
+<<<<<<< HEAD
+=======
+    
+                {/* <Header>Default Profile Image</Header> */}
+>>>>>>> 608b0f2297fe88034fb4b0423cd85c266446423c
                 
                 <div style={{float:'right',overlayY:'auto'}}>
                 <div className="field">

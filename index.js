@@ -5,6 +5,7 @@ var bodyParser = require('body-parser')
 var cors = require('cors') 
 
 var users = require('./routes/users')
+var signup = require('./routes/signup')
 
 // database config file to set connection
 // var connection = require('./dbconfig');
@@ -15,7 +16,8 @@ app.use(bodyParser.json())
 
 app.use(cors())
 
-app.use('/users',users);
+// app.use('/users',users);
+app.use('/users',signup);
 
 // app.get('/users',(req,res)=>{
 
