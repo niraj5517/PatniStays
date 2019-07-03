@@ -20,7 +20,8 @@ class Login extends Component {
     console.log(e.target.value.length);
     if (valPhone(e.target.value) && e.target.value.length === 10) {
       
-      this.setState({MobError:true,checklen:true})
+      this.setState({MobError:true})
+      this.setState({checklen:true})
     }
     else{
       this.setState({MobError:false});
