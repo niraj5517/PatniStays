@@ -1,0 +1,18 @@
+.select-option{
+    color:black;
+    background-color: white;
+    /* font: 1em sans-serif; */
+    font-weight: bold;
+    border:none;
+    width:150px;
+    margin:0;
+    margin-top:5px;
+}
+.select-option:hover{
+    color:black;
+    background-color: white;
+}
+.select-option:hover::after{
+    color:black;
+    background-color: white;
+}
