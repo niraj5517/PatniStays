@@ -49,6 +49,7 @@ class Login extends Component {
           <Modal.Content image>
             <Image wrapped size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' />
                 <Modal.Description>
+    
                 {/* <Header>Default Profile Image</Header> */}
                 
                 <div style={{float:'right',overlayY:'auto'}}>
@@ -104,102 +105,15 @@ class Login extends Component {
 
             <form className="ui form">
         <Modal style={{width:'74%',height:'75%',margin:'0 13%',overflowY:'auto'}} dimmer={dimmer} open={otherOpen} onClose={this.close} >
+         
+         
           <Modal.Header>{this.state.signInUp===0?"Log In":"Sign Up"}<span style={{float:"right",cursor:'pointer',}}><i onClick={this.closeAll} class="fa fa-times" aria-hidden="true"></i></span></Modal.Header>
           
-          <Modal.Content image>
-            <Image wrapped size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' />
-                <Modal.Description>
-                {/* <Header>Default Profile Image</Header> */}
-                
-                <div style={{float:'right',overlayY:'auto'}}>
-                    
-                
-                {this.state.signInUp === 0 ?
-                    <div >
-                  {
-                      /* Sign In Div */ }
-                <div className="field">
-                    <label>Enter your Password:</label>
-                    <input className="form-control" placeholder="Password" />
-                </div>
-                {/* <div className="field">
-                    <label>Last Name</label>
-                    <input placeholder="Last Name" />
-                </div> */}
-                                        
-                {/* <div className="field">
-                    <div className="ui checkbox">
-                    <input type="checkbox" id="checkboxTick" className="hidden" readOnly="" tabIndex="0" />
-                    <br/><br/>
-                    <label for="checkboxTick">I agree to the Terms and Conditions</label>
-                    </div>
-                </div> */}
-                                        
-                </div>
-                      : null }
-                    
-                    
-                
-                    {/* Sign Up Div */}
-                    {this.state.signInUp === 1 ?
-                     <div>
-                <div className="field">
-                    <label>Enter your Email:</label>
-                    <input className="form-control" placeholder="Email" />
-                </div>
-                <br/>
-                <div className="field">
-                    <label>Enter your Password:</label>
-                    <input className="form-control" placeholder="Password" />
-                </div>
-                <br/>
-                <div className="field">
-                    <label>Re-Enter your Password:</label>
-                    <input className="form-control" placeholder="Password Again" />
-                </div>
-                {/* <div className="field">
-                    <label>Last Name</label>
-                    <input placeholder="Last Name" />
-                </div> */}
-                <div className="field">
-                    <div className="ui checkbox">
-                    {/* <input type="checkbox" id="checkboxTick2"/> */}
-                    <br/><br/>
-                    <Checkbox label='I agree to the Terms and Conditions' />
-                    {/* <label for="checkboxTick2">I agree to the Terms and Conditions.</label> */}
-                    </div>
-                </div>
-
-                                    
-                </div> 
-                    
-                    
-                    : null}
-               
-
-
-
-                
-                </div>
-                {/* <button type="submit" className="ui button">Submit</button> */}
-                
-                </Modal.Description>
-          </Modal.Content>
+          {this.state.signInUp===0?<SignIn/>:<SignUp/>}
           
-          <Modal.Actions>
-              <br/>
-            <Button color='red' onClick={this.closeAll}>
-              Close
-            </Button>
-            <Button
-              positive
-              icon='checkmark'
-              labelPosition='right'
-              content= {this.state.signInUp===0?"Log In":"Sign Up"} 
-              onClick={this.closed}
-              value="modal to be closed"
-            />
-          </Modal.Actions>
+          
+
+
         </Modal>
         </form>
       </div>
