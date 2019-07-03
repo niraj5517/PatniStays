@@ -12,26 +12,29 @@ class Login extends Component {
     this.handleMobile=this.handleMobile.bind(this);
     this.handleChangeCheck=this.handleChangeCheck.bind(this);
   }
-  state = { open: false, signInUp: 2, checked: false, mob: '' }
+  state = { open: false, signInUp: 2, checked: false, checklen:false, mob:'',MobError:true,  }
   
   handleMobile(e) {
-    console.log('mobile');
-    console.log(e.target.controls);
+    
     this.setState({ mob: e.target.value });
-    console.log(this.state.mob);
-
-    if(valPhone(e.target.value)){
-      console.log('true');
+    console.log(e.target.value.length);
+    if (valPhone(e.target.value) && e.target.value.length === 10) {
+      
+      this.setState({MobError:true,checklen:true})
     }
     else{
-      console.log('false');
+      this.setState({MobError:false});
     }
+
+    
   }
 
-  handleChangeCheck(e){
-    this.setState({
-      checked:!this.state.checked
-    });
+  handleChangeCheck(e) {
+      this.setState({
+        checked: !this.state.checked,
+        
+      });
+    
   }
 
   aman() {
@@ -47,11 +50,11 @@ class Login extends Component {
   }
   
   processed = () => {
-    this.setState({ open: false,signInUp:1})
+    this.setState({ open: false,signInUp:1,checked: false, });
   }
   
   closeAll = (event) => {
-    this.setState({ open: false, otherOpen:false })
+    this.setState({ open: false, otherOpen: false, checked: false, mob: '', checklen: false, })
   }
 
   closed = () => {
@@ -65,7 +68,7 @@ class Login extends Component {
     return (
       <div>
      
-        <i style={{fontSize:'40px',color:'white'}} onClick={this.show('blurring')} class="fa fa-fw fa-sign-in" aria-hidden="true"></i>
+        <i style={{fontSize:'40px',color:'white'}} onClick={this.show('blurring')} className="fa fa-fw fa-sign-in" aria-hidden="true"></i>
             
         <form className="ui form">
         <Modal style={{width:'74%',height:'75%',margin:'0 13%',overflowY:'auto'}} dimmer={dimmer} open={open} onClose={this.closeAll} >
@@ -74,16 +77,16 @@ class Login extends Component {
           <Modal.Content image>
             <Image wrapped size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' />
                 <Modal.Description>
-<<<<<<< HEAD
-=======
-    
-                {/* <Header>Default Profile Image</Header> */}
->>>>>>> 608b0f2297fe88034fb4b0423cd85c266446423c
                 
                 <div style={{float:'right',overlayY:'auto'}}>
                 <div className="field">
                     <label>Enter your mobile number:</label>
                     <input type="tel" pattern="[1-9]{1}[0-9]{9}" value={this.state.mob} onChange={this.handleMobile} maxlength="10" className="form-control" placeholder="Mobile Number" required />
+                    {(!this.state.MobError)?
+                    <div className="alert alert-danger" role="alert">
+                        Please enter valid mobile number.
+                    </div>:null}
+                    
                 </div>
               
                 <div className="field">
@@ -104,7 +107,7 @@ class Login extends Component {
               Close
             </Button>
             <Button
-              disabled={!this.state.checked}
+              disabled={!this.state.checked }
               positive
               icon='checkmark'
               labelPosition='right'
