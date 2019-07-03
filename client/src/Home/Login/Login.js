@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Button ,Image, Modal, Checkbox } from 'semantic-ui-react';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
+import axios from 'axios';
+
 // import { METHODS } from 'http';
 
 class Login extends Component {
@@ -19,13 +21,6 @@ class Login extends Component {
 
     show = dimmer => () => {
             this.setState({ dimmer, open: true})
-        
-        // if (this.state.signInUp === 1) {
-        //     this.setState({open: false, otherOpen: false })
-        // }
-        // else {
-            
-        // }
     }
     
     close = (event) => {
@@ -35,7 +30,24 @@ class Login extends Component {
     }
   
   processed = () => {
-    this.setState({ open: false,signInUp:1})
+ 
+
+    axios.get('http://localhost:4000/signup', {
+      params: {
+        number: '12345'
+      }
+              // value:'dfghjk',
+    })
+    .then(function (response) {
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+
+
+    this.setState({ open: false,signInUp:0})
   }
     closeAll = (event) => {
 
@@ -68,7 +80,8 @@ class Login extends Component {
                 <div style={{float:'right',overlayY:'auto'}}>
                 <div className="field">
                     <label>Enter your mobile number:</label>
-                    <input className="form-control" placeholder="Mobile Number" required/>
+                    <input className="form-control" placeholder="Mobile Number" onChange={ this.handleChange }
+                     required/>
                 </div>
                 {/* <div className="field">
                     <label>Last Name</label>

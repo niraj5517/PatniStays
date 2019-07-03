@@ -17,7 +17,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 // app.use('/users',users);
-app.use('/users',signup);
+app.use('/signup',signup);
 
 // app.get('/users',(req,res)=>{
 

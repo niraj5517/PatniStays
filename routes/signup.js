@@ -5,17 +5,18 @@ var bodyParser = require('body-parser')
 
 router.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.json())
-router.post('/users', function (req, res) {
+router.get('/', function (req, res) {
    
-   let number =req.body.number;
+   let number =req.query.number;
+  
   
     // var name=req.body.value;
 //  var name ='0';
-console.log('hello '+number);
+console.log('hell87o '+ number);
 
-var q=`select password from customerInfo where customerMOB='${number}'`;
+var q=`select customerPassword from CustomerInfo where customerMOB='${number}'`;
 
-
+let object={bool:true};
 
 connection.query(q, function (err, result) {
     if (err) { console.log('gfds'); throw err;}
@@ -26,7 +27,14 @@ connection.query(q, function (err, result) {
    { console.log('found'+result);
     // res.send(result); 
 }
-    else {console.log('not founf');res.send('not');}
+    else {
+        
+        console.log('not founf');
+        if(object.bool)
+       { res.send('not');}
+        else {res.send('not bool');}
+
+    }
   });
 
 
