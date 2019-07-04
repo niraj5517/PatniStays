@@ -2,7 +2,7 @@
 
 export const valPhone =(phone) => {
 
-    console.log('phone validation '+ phone +'\n');
+    // console.log('phone validation '+ phone +'\n');
 
     var numbers = /^[0-9]+$/;
     

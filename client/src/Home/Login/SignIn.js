@@ -3,10 +3,10 @@ import { Button ,Image, Modal, Checkbox } from 'semantic-ui-react';
 
 export default class SignIn extends Component {
 
-     constructor() {
-        super()
+     constructor(props) {
+        super(props)
          this.state = { otherOpen: true }
-         console.log('constructor called');
+         console.log('constructor called sigin ,passwoed '+ this.props.password+' k'+this.props.number);
     }
   
     show = dimmer => () => {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button ,Image, Modal, Checkbox } from 'semantic-ui-react';
+import axios from 'axios';
 
 export default class SignUp extends Component {
 

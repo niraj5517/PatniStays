@@ -8,15 +8,13 @@ router.use(bodyParser.json())
 router.get('/', function (req, res) {
    
    let number =req.query.number;
-  
-  
-    // var name=req.body.value;
-//  var name ='0';
+  // var number=req.body.value;
+
 console.log('hell87o '+ number);
 
 var q=`select customerPassword from CustomerInfo where customerMOB='${number}'`;
 
-let object={bool:true};
+let object={bool:true,password:""};
 
 connection.query(q, function (err, result) {
     if (err) { console.log('gfds'); throw err;}
@@ -25,16 +23,14 @@ connection.query(q, function (err, result) {
     console.log(result);
     if(result.length)
    { console.log('found'+result);
-    // res.send(result); 
+   object.password='niraj';
+    res.send(object); 
 }
     else {
-        
-        console.log('not founf');
-        if(object.bool)
-       { res.send('not');}
-        else {res.send('not bool');}
-
-    }
+         console.log('not founf');
+         object.bool=false;
+       res.send(object);}
+ 
   });
 
 
