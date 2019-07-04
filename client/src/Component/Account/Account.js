@@ -3,13 +3,14 @@ import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import Profile from './profile/Profile';
 import Header from '../Header/Header';
+import AccHome from './AccHome/AccHome';
 
 
 export default class Account extends Component {
     constructor() {
         super();
         this.state = {
-            option:'home',
+            option:'home/profile',
         }
     }
     
@@ -36,17 +37,38 @@ export default class Account extends Component {
                             
                         }}>
                         <SideNav.Toggle style={{marginTop:'60px'}}/>
-                        <SideNav.Nav defaultSelected="home">
+                        <SideNav.Nav defaultSelected="home/profile">
                             
-                            
-                        <NavItem onSelect eventKey="home">
+{/*                     <NavItem onSelect eventKey="home">
                             <NavIcon>
                                 <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
                             </NavIcon>
                             <NavText>
                                 Home
                             </NavText>
-                        </NavItem>
+                        </NavItem> */}
+                            
+                            <NavItem eventKey="home">
+                                <NavIcon>
+                                    <i eventKey="home" clickable className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                                </NavIcon>
+                                <NavText>
+                                    Home
+                                </NavText>
+                                <NavItem eventKey="home/profile">
+                                    <NavText>
+                                        My Profile
+                                    </NavText>
+                                </NavItem>
+                                <NavItem eventKey="home/visits">
+                                    <NavText>
+                                        Scheduled Visits
+                                    </NavText>
+                                </NavItem>
+                            </NavItem>
+
+
+
                         <NavItem eventKey="problems">
                         <NavIcon>
                             <i className="fa fa-fw fa-bolt" style={{ fontSize: '1.75em' }} />
@@ -118,8 +140,19 @@ export default class Account extends Component {
 
                 </div>
                 <div style={{marginLeft:'60px',}}>
-                      
-                    {this.state.option ==='home' ? <Profile /> : null}
+                     {this.state.option === 'home' ? <AccHome/> : null}
+                     
+                    {this.state.option === 'home/profile' ? <Profile /> : null}
+                    {/* {this.state.option === 'problems' ? < /> : null}
+                    {this.state.option === 'payment' ? < /> : null}
+                    {this.state.option === 'notices' ? < /> : null}
+                    {this.state.option === 'policy' ? < /> : null}
+                    {this.state.option === 'reviews' ? < /> : null}
+                    {this.state.option === 'charts/linechart' ? < /> : null}
+                    {this.state.option === 'charts/barchart' ? < /> : null} */}
+                    {/* {this.state.option === 'reviews' ? <Profile /> : null}
+                    {this.state.option === 'reviews' ? <Profile /> : null} */}
+                    
                     
                 </div>
                 </div>

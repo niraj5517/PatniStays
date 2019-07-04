@@ -35,35 +35,35 @@ class Profile extends Component {
     render(){
         
     return (
-        < div className = "col-md-12" >
-            <form>
+        <div className="container-fluid row" >
+            <form className = "  col-md-12">
 
     <p className="h4 mb-4"><strong>Personal Details:</strong> </p>
 
     <div className="form-row mb-4">
-        <div className="col">
+        <div className="col-md-6">
             
             <input type="text" id="defaultRegisterFormFirstName" className="form-control" placeholder="First name"/>
         </div>
-        <div className="col">
+        <div className="col-md-6">
             
             <input type="text" id="defaultRegisterFormLastName" className="form-control" placeholder="Last name"/>
         </div>
     </div>
 
    
-    <input type="email" id="defaultRegisterFormEmail" className="form-control mb-4" value="abc@gmail.com" placeholder="E-mail" readOnly/>
+    <input type="email" id="defaultRegisterFormEmail" className="form-control mb-4" value="" placeholder="E-mail" readOnly/>
 
 
     <input type="text" id="defaultRegisterPhonePassword" className="form-control" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock" readOnly/>
     
     <br/>
     <div className="form-row mb-4">
-        <div className="col">
+        <div className="col-md-6">
             
             <input type="text" id="defaultRegisterFormCompany" className="form-control" placeholder="Company/Institute"/>
         </div>
-        <div className="col">
+        <div className="col-md-6">
             
             <input type="text" id="defaultRegisterDesignation" className="form-control" placeholder="Designation"/>
         </div>
@@ -75,7 +75,7 @@ class Profile extends Component {
       <br/><br/>
    
 <div className="form-row mb-4">
-        <div className="col">
+        <div className="col-md-6">
             
              {/* <Dropdown as={ButtonGroup}>
                 <Button style={{width:'180px',}} variant="outline-success">{this.state.idType?this.state.idType:'Select an Id Type:'}</Button>
@@ -101,7 +101,7 @@ class Profile extends Component {
                         </select>
         </div>
         <br/>
-        <div className="col">
+        <div className="col-md-6">
             
             <input type="text" id="defaultRegisterId" className="form-control" placeholder="ID Number"/>
         </div>
@@ -112,11 +112,11 @@ class Profile extends Component {
 
 
      <div className="form-row mb-4">
-         <div className="col">
+         <div className="col-md-6">
               <label htmlfor="id"/> Uplaod the ID proof:<br/>
               <img src="" alt="No ID present" width="150px"/>
          </div>
-         <div className="col">
+         <div className="col-md-6">
           <input type="file" name="id" id="id" onChange={this.handleIdImg} classame="form-control" />
          </div>
      </div>
@@ -127,7 +127,8 @@ class Profile extends Component {
 
      <hr/>
 
-         </form>
+            </form>
+
          </div>
       
         
