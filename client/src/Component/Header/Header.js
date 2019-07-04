@@ -11,7 +11,7 @@ export default class Header extends Component {
             <div style={{zIndex:'1024'}}>
                 <nav style={{zIndex:'1024'}}>
                     
-                    <Navbar style={{background:'#db3d44',position: 'relative',zIndex:'1024'}} >
+                    <Navbar style={{background:'linear-gradient(360deg,#d11450,#df293a)',position: 'relative',zIndex:'1024'}} >
                         < img src = ""
                         alt = "m" width="25px"/>
                         <Navbar.Brand to="/">Navbar</Navbar.Brand>

@@ -4,6 +4,8 @@ import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import Profile from './profile/Profile';
 import Header from '../Header/Header';
 import AccHome from './AccHome/AccHome';
+import Review from './Review/Review';
+import Problems from './Problems/Problems';
 
 
 export default class Account extends Component {
@@ -37,7 +39,7 @@ export default class Account extends Component {
                             
                         }}>
                         
-                        <SideNav.Toggle style={{ marginTop: '60px', color: 'wheat', }} />
+                        <SideNav.Toggle style={{ marginTop: '68px', backgroundColor: 'wheat', }} />
                         
                         <SideNav.Nav defaultSelected="home/profile">
                             
@@ -45,7 +47,7 @@ export default class Account extends Component {
                             <NavIcon>
                                 <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em',color:'red', }} />
                             </NavIcon>
-                            <NavText>
+                            <NavText style={{color:'black',}}>
                                 Home
                             </NavText>
                         </NavItem> */}
@@ -58,22 +60,22 @@ export default class Account extends Component {
                                     My Account
                                 </NavText>
                                 <NavItem eventKey="home/profile">
-                                    <NavText>
+                                    <NavText style={{color:'black',}}>
                                         My Profile
                                     </NavText>
                                 </NavItem>
                                 <NavItem eventKey="home/visits">
-                                    <NavText>
+                                    <NavText style={{color:'black',}}>
                                         Scheduled Visits
                                     </NavText>
                                 </NavItem>
                                 <NavItem eventKey="home/checklist">
-                                    <NavText>
+                                    <NavText style={{color:'black',}}>
                                         Checklist
                                     </NavText>
                                 </NavItem>
                                 <NavItem eventKey="home/bookings">
-                                    <NavText>
+                                    <NavText style={{color:'black',}}>
                                         My Bookings
                                     </NavText>
                                 </NavItem>
@@ -85,7 +87,7 @@ export default class Account extends Component {
                         <NavIcon>
                             <i className="fa fa-fw fa-bolt" style={{ fontSize: '1.75em',color:'red', }} />
                         </NavIcon>
-                        <NavText>
+                        <NavText style={{color:'black',}}>
                             Report Problems
                         </NavText>
                         </NavItem>
@@ -95,7 +97,7 @@ export default class Account extends Component {
                         <NavIcon>
                             <i className="fa fa-fw fa-money" style={{ fontSize: '1.75em',color:'red', }} />
                         </NavIcon>
-                        <NavText>
+                        <NavText style={{color:'black',}}>
                             Payment
                         </NavText>
                     </NavItem> */}
@@ -104,21 +106,21 @@ export default class Account extends Component {
                         <NavIcon>
                             <i className="fa fa-fw fa-money" style={{ fontSize: '1.75em',color:'red', }} />
                         </NavIcon>
-                        <NavText>
+                        <NavText style={{color:'black',}}>
                             Payment
                         </NavText>
                         <NavItem eventKey="payment/rent">
-                            <NavText>
+                            <NavText style={{color:'black',}}>
                                 Rent
                             </NavText>
                         </NavItem>
                         <NavItem eventKey="payment/security">
-                            <NavText>
+                            <NavText style={{color:'black',}}>
                                 Security
                             </NavText>
                         </NavItem>
                         <NavItem eventKey="payment/penalty">
-                            <NavText>
+                            <NavText style={{color:'black',}}>
                                 Penalty
                             </NavText>
                         </NavItem>
@@ -128,7 +130,7 @@ export default class Account extends Component {
                         <NavIcon>
                             <i className="fa fa-fw fa-bell" style={{ fontSize: '1.75em',color:'red', }} />
                         </NavIcon>
-                        <NavText>
+                        <NavText style={{color:'black',}}>
                             Notices
                         </NavText>
                     </NavItem> */}
@@ -138,16 +140,16 @@ export default class Account extends Component {
                         <NavIcon>
                             <i className="fa fa-fw fa-bell" style={{ fontSize: '1.75em',color:'red', }} />
                         </NavIcon>
-                        <NavText>
+                        <NavText style={{color:'black',}}>
                             Notices
                         </NavText>
                         <NavItem eventKey="notices/admin">
-                            <NavText>
+                            <NavText style={{color:'black',}}>
                                 From Admin
                             </NavText>
                         </NavItem>
                         <NavItem eventKey="notices/exit">
-                            <NavText>
+                            <NavText style={{color:'black',}}>
                                 Exit Notice
                             </NavText>
                         </NavItem>
@@ -162,7 +164,7 @@ export default class Account extends Component {
                         <NavIcon>
                             <i className="fa fa-fw fa-briefcase" style={{ fontSize: '1.75em',color:'red', }} />
                         </NavIcon>
-                        <NavText>
+                        <NavText style={{color:'black',}}>
                             Policy
                         </NavText>
                     </NavItem>
@@ -170,7 +172,7 @@ export default class Account extends Component {
                         <NavIcon>
                             <i className="fa fa-fw fa-star" style={{ fontSize: '1.75em',color:'red', }} />
                         </NavIcon>
-                        <NavText>
+                        <NavText style={{color:'black',}}>
                             Reviews
                         </NavText>
                     </NavItem>
@@ -178,16 +180,16 @@ export default class Account extends Component {
                         <NavIcon>
                             <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em',color:'red', }} />
                         </NavIcon>
-                        <NavText>
+                        <NavText style={{color:'black',}}>
                             Charts
                         </NavText>
                         <NavItem eventKey="charts/linechart">
-                            <NavText>
+                            <NavText style={{color:'black',}}>
                                 Line Chart
                             </NavText>
                         </NavItem>
                         <NavItem eventKey="charts/barchart">
-                            <NavText>
+                            <NavText style={{color:'black',}}>
                                 Bar Chart
                             </NavText>
                         </NavItem>
@@ -196,7 +198,7 @@ export default class Account extends Component {
                         <NavIcon>
                             <i className="fa fa-fw fa-sign-out" style={{ fontSize: '1.75em',color:'red', }} />
                         </NavIcon>
-                        <NavText>
+                        <NavText style={{color:'black',}}>
                             Logout
                         </NavText>
                     </NavItem>
@@ -208,11 +210,13 @@ export default class Account extends Component {
                      {this.state.option === 'home' ? <AccHome/> : null}
                      
                     {this.state.option === 'home/profile' ? <Profile /> : null}
-                    {/* {this.state.option === 'problems' ? < /> : null}
+                    {this.state.option === 'reviews' ? <Review /> : null}
+                    {this.state.option === 'problems' ? <Problems/> : null}
+                    {/* 
                     {this.state.option === 'payment' ? < /> : null}
                     {this.state.option === 'notices' ? < /> : null}
                     {this.state.option === 'policy' ? < /> : null}
-                    {this.state.option === 'reviews' ? < /> : null}
+                    
                     {this.state.option === 'charts/linechart' ? < /> : null}
                     {this.state.option === 'charts/barchart' ? < /> : null} */}
                     {/* {this.state.option === 'reviews' ? <Profile /> : null}
