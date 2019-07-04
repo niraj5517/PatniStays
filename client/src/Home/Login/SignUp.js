@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import { Button ,Image, Modal, Checkbox } from 'semantic-ui-react';
-// import axios from 'axios';
-
-import {ValidateEmail} from './../../Validate.js';
 
 export default class SignUp extends Component {
 
      constructor() {
         super()
-         this.state = { otherOpen: true, email:'' }
+         this.state = { otherOpen: true }
          console.log('constructor called');
-
-         this.handleEmail = this.handleEmail.bind(this);
     }
   
     show = dimmer => () => {
@@ -26,15 +21,6 @@ export default class SignUp extends Component {
     signin= () => {
         this.setState({ otherOpen: false })
         
-    }
-
-    handleEmail(event) {
-        ValidateEmail(event.target.value);
-        console.log(event.target.value);
-        this.setState({
-            email: event.target.value,
-        });
-
     }
 
     componentWillReceiveProps() {
@@ -61,7 +47,7 @@ export default class SignUp extends Component {
                 <div>
                 <div className="field">
                     <label>Enter your Email:</label>
-                    <input type="email" onChange={this.handleEmail} className="form-control" placeholder="Email" />
+                    <input type="email" className="form-control" placeholder="Email" />
                 </div>
                 <br/>
                 <div className="field">

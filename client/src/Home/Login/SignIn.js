@@ -3,10 +3,10 @@ import { Button ,Image, Modal, Checkbox } from 'semantic-ui-react';
 
 export default class SignIn extends Component {
 
-     constructor(props) {
-        super(props)
+     constructor() {
+        super()
          this.state = { otherOpen: true }
-         console.log('constructor called sigin ,passwoed '+ this.props.password+' k'+this.props.number);
+         console.log('constructor called');
     }
   
     show = dimmer => () => {
@@ -20,19 +20,20 @@ export default class SignIn extends Component {
     }
     signin= () => {
         this.setState({ otherOpen: false })
-         }
+        
+    }
 
     componentWillReceiveProps() {
-        // this.setState({ otherOpen: true });
+        this.setState({ otherOpen: true });
         console.log('props recieved');
-         this.props.condition();
+        this.props.condition();
   }
     render() {
 
-        // const { otherOpen } = this.state;
+        const { otherOpen } = this.state;
         return (
             <React.Fragment >
-                <Modal style={{width:'74%',height:'75%',margin:'0 13%',overflowY:'auto'}} dimmer={'blurring'} open={this.state.otherOpen}  onClose={this.closeAll}>
+                <Modal style={{width:'74%',height:'75%',margin:'0 13%',overflowY:'auto'}} dimmer={'blurring'} open={otherOpen}  onClose={this.closeAll}>
             
                     <Modal.Header>Log In <span style={{float:"right",cursor:'pointer',}}><i onClick={this.closeAll} class="fa fa-times" aria-hidden="true"></i></span></Modal.Header>
           

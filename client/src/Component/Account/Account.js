@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import Profile from './profile/Profile';
-import Header from '../Header/Header';
+// import Header from '../Header/Header';
 import AccHome from './AccHome/AccHome';
 import Review from './Review/Review';
 import Problems from './Problems/Problems';
@@ -19,9 +19,6 @@ export default class Account extends Component {
     render() {
         return (
             <div>
-                <div>
-                <Header/>
-                </div>
                 <div style={{ paddingRight: '20px', }}>
                     
                 
@@ -43,7 +40,7 @@ export default class Account extends Component {
                         
                         <SideNav.Nav defaultSelected="home/profile">
                             
-{/*                     <NavItem onSelect eventKey="home">
+                        {/*    <NavItem onSelect eventKey="home">
                             <NavIcon>
                                 <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em',color:'red', }} />
                             </NavIcon>
