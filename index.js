@@ -1,23 +1,26 @@
 var express=require('express');
 var app= express();
 var port =process.env.PORT||4000;
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+
 var cors = require('cors') 
 
-var users = require('./routes/users')
-var signup = require('./routes/signup')
+var users = require('./routes/users');
+var signup = require('./routes/signup');
+var booknow = require('./routes/booknow');
 
 // database config file to set connection
 // var connection = require('./dbconfig');
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
  // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 app.use(cors())
 
 // app.use('/users',users);
 app.use('/mob',signup);
+app.use('/booknow',booknow);
 
 // app.get('/users',(req,res)=>{
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Image, Modal,} from 'semantic-ui-react';
+import axios from 'axios';
 
 class BookNow extends Component {
   constructor() {
@@ -19,9 +20,23 @@ class BookNow extends Component {
 
    handleChange = (e) => {
        this.setState({value:e.target.value});
-       console.log(e.target.value);
+       console.log('in BookNow.js file '+e.target.value);
 
-
+    axios.get('http://localhost:4000/booknow'
+    ,{
+     params:{
+        beds:e.target.value,
+     }
+    }
+    ).then( res =>{
+      console.log('working in BookNow file '+ this.state.value);
+      console.log(res.data);
+    } )
+    // .catch(error =>{
+    //   console.log(error);
+    // }).then(() => {
+    //   //
+    // });
 
 
 

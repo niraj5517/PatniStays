@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Button ,Image, Modal, Checkbox } from 'semantic-ui-react';
 import SignIn from './SignIn';
+import axios from 'axios';
 import SignUp from './SignUp';
 import {valPhone} from './../../Validate.js';
 
 class Login extends Component {
+  
   constructor() {
     super();
     this.close = this.close.bind(this);
@@ -12,67 +14,99 @@ class Login extends Component {
     this.handleMobile=this.handleMobile.bind(this);
     this.handleChangeCheck=this.handleChangeCheck.bind(this);
   }
-  state = { open: false, signInUp: 2, checked: false, checklen:false, mob:'', MobError:true,}
+  state = { open: false, signInUp: 2,
+    checked: false, checklen:false,
+     mob:'',password:'',
+     MobError:false, disable:true }
   
-  handleMobile(e) {
-    
-    this.setState({ mob: e.target.value });
-    console.log(e.target.value.length);
-    if (valPhone(e.target.value) && e.target.value.length === 10) {
-      
-      this.setState({ MobError: true })
-      this.setState({ checklen: true})
-    }
-    else{
-      this.setState({MobError:false});
-      this.setState({checklen:false});
-      this.setState({checked:false});
-    }
+    handleMobile(e) {
+      console.log(e.target.value.length+'  '+ valPhone(e.target.value)+ '  '+this.state.checklen);
+      this.setState({ mob: e.target.value });
+      let length= e.target.value.length ;
+      let value=e.target.value;
+      // console.log(e.target.value.length);
+      if (valPhone(e.target.value))
+       {this.setState({MobError:true},()=>{
   
-    
+        if (length ===10)
+           {this.setState({checklen:true},()=>{
+            console.log(length+'  '+ value+ '  '+this.state.checklen);
+            if(this.state.checked&&this.state.checklen&&this.state.MobError)
+             { this.setState({disable:false}) ; }
+           });
+           }
+        else 
+          {this.setState({checklen:false});
+          this.setState({disable:true}); }
+       }) ;
+      }
+      else
+      {this.setState({MobError:false});this.setState({disable:true}); }
   }
 
   handleChangeCheck(e) {
-      
-    
-      if(this.state.checklen){
-     
-      this.setState({ checked: !this.state.checked, });
-      
-      }
+    this.setState({checked: !this.state.checked},()=>{
+      if(this.state.checked&&this.state.checklen&&this.state.MobError)
+      { this.setState({disable:false}) ; }
+      else {this.setState({disable:true}) ;}
 
+    });
 
-   
-    
   }
 
+  
   aman() {
-    this.setState({signInUp: 2});
+    this.setState({signInUp: 2,mob:'',disable:true ,checked:false,checklen:false});
   }
 
   show = dimmer => () => {
-            this.setState({ dimmer, open: true})
-  }
-    
-  close = (event) => {
-        this.setState({ open: false})
-  }
-  
-  processed = () => {
-    this.setState({ open: false,signInUp:1,checked: false, });
-  }
-  
-  closeAll = (event) => {
-    this.setState({ open: false, otherOpen: false, checked: false, mob: '', checklen: false, })
-  }
+    this.setState({ dimmer, open: true})
+}
+close = (event) => {
+  this.setState({ open: false})
+}
+processed = () => {
 
-  closed = () => {
-    this.setState({ open: false, otherOpen:false })
+  axios.get('http://localhost:4000/mob', {
+    params: {
+      number: this.state.mob
+    }
+  })
+  .then(response =>{
+    console.log(response.data);
+    if(response.data.bool){this.setState({ open: false,signInUp:0, 
+      password:response.data.password});}
+    else {this.setState({ open: false,signInUp:1, });
   }
+  })
+  .catch(error =>{
+    console.log(error);
+  })
+  .then( () =>{
+    // always executed
+  }); 
+
+
+  
+}
+  
+  
+closeAll = (event) => {
+  this.setState({ open: false, otherOpen: false, checked: false, mob: '', checklen: false, })
+}
+
+closed = () => {
+  this.setState({ open: false, otherOpen:false })
+}
+able=()=>{
+  return false;
+}
   
   
   render() {
       const { open, dimmer } = this.state;
+      let propss = {condition:this.aman,password:this.state.password,number:this.state.mob};
+      
     return (
       <div>
      
@@ -89,8 +123,10 @@ class Login extends Component {
                 <div style={{float:'right',overlayY:'auto'}}>
                 <div className="field">
                     <label>Enter your mobile number:</label>
-                    <input type="tel" pattern="[1-9]{1}[0-9]{9}" value={this.state.mob} onChange={this.handleMobile} maxLength="10" className="form-control" placeholder="Mobile Number" required />
-                    {(!this.state.MobError)?
+                    <input type="tel" pattern="[1-9]{1}[0-9]{9}" value={this.state.mob} 
+                    onChange={this.handleMobile} maxlength="10" className="form-control" placeholder="Mobile Number" 
+                    required />
+                    {(!this.state.MobError||!this.state.checklen)?
                     <div className="alert alert-danger" role="alert">
                         Please enter valid mobile number.
                     </div>:null}
@@ -101,7 +137,8 @@ class Login extends Component {
                     <div className="ui checkbox">
                     
                     <br/><br/>
-                    <Checkbox disabled={!this.state.checklen} onChange={this.handleChangeCheck} label='I agree to the Terms and Conditions' />
+                    <Checkbox onChange={this.handleChangeCheck} 
+                    label='I agree to the Terms and Conditions' required />
                     </div>
                 </div>
                 </div>
@@ -115,7 +152,7 @@ class Login extends Component {
               Close
             </Button>
             <Button
-              disabled={!this.state.checked}
+              disabled={this.state.disable}
               positive
               icon='checkmark'
               labelPosition='right'
@@ -128,9 +165,10 @@ class Login extends Component {
             </form>
             
             <form className="ui form">
-          {this.state.signInUp === 0 ? <SignIn condition={this.aman} /> : null}
+            {this.state.signInUp === 0 ? <SignIn {...propss} /> : null}
           
-        {this.state.signInUp === 1 ? <SignUp condition={this.aman} /> : null}
+          {this.state.signInUp === 1 ? <SignUp {...propss} /> : null}
+            
           
         </form>
       </div>
