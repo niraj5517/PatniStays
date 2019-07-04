@@ -26,7 +26,7 @@ export default class Account extends Component {
                 
                     {/* <Sidebar /> */}
                     
-                    <SideNav style={{background:'',}}
+                    <SideNav style={{background:'white',}}
                         
                         onSelect={(selected) => {
                             // Add your code here
@@ -36,12 +36,14 @@ export default class Account extends Component {
                                     })
                             
                         }}>
-                        <SideNav.Toggle style={{marginTop:'60px'}}/>
+                        
+                        <SideNav.Toggle style={{ marginTop: '60px', color: 'wheat', }} />
+                        
                         <SideNav.Nav defaultSelected="home/profile">
                             
 {/*                     <NavItem onSelect eventKey="home">
                             <NavIcon>
-                                <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                                <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em',color:'red', }} />
                             </NavIcon>
                             <NavText>
                                 Home
@@ -50,10 +52,10 @@ export default class Account extends Component {
                             
                             <NavItem eventKey="home">
                                 <NavIcon>
-                                    <i eventKey="home" clickable className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                                    <i eventKey="home" clickable className="fa fa-fw fa-home" style={{ fontSize: '1.75em',color:'red', }} />
                                 </NavIcon>
-                                <NavText>
-                                    Home
+                                <NavText style={{color:'black',}}>
+                                    My Account
                                 </NavText>
                                 <NavItem eventKey="home/profile">
                                     <NavText>
@@ -65,37 +67,100 @@ export default class Account extends Component {
                                         Scheduled Visits
                                     </NavText>
                                 </NavItem>
+                                <NavItem eventKey="home/checklist">
+                                    <NavText>
+                                        Checklist
+                                    </NavText>
+                                </NavItem>
+                                <NavItem eventKey="home/bookings">
+                                    <NavText>
+                                        My Bookings
+                                    </NavText>
+                                </NavItem>
                             </NavItem>
 
 
 
                         <NavItem eventKey="problems">
                         <NavIcon>
-                            <i className="fa fa-fw fa-bolt" style={{ fontSize: '1.75em' }} />
+                            <i className="fa fa-fw fa-bolt" style={{ fontSize: '1.75em',color:'red', }} />
                         </NavIcon>
                         <NavText>
                             Report Problems
                         </NavText>
-                    </NavItem>
-                    <NavItem eventKey="payment">
+                        </NavItem>
+                            
+
+                    {/* <NavItem eventKey="payment">
                         <NavIcon>
-                            <i className="fa fa-fw fa-money" style={{ fontSize: '1.75em' }} />
+                            <i className="fa fa-fw fa-money" style={{ fontSize: '1.75em',color:'red', }} />
                         </NavIcon>
                         <NavText>
                             Payment
                         </NavText>
-                    </NavItem>
-                    <NavItem eventKey="notices">
+                    </NavItem> */}
+                    
+                    <NavItem eventKey = "payment" >
                         <NavIcon>
-                            <i className="fa fa-fw fa-bell" style={{ fontSize: '1.75em' }} />
+                            <i className="fa fa-fw fa-money" style={{ fontSize: '1.75em',color:'red', }} />
+                        </NavIcon>
+                        <NavText>
+                            Payment
+                        </NavText>
+                        <NavItem eventKey="payment/rent">
+                            <NavText>
+                                Rent
+                            </NavText>
+                        </NavItem>
+                        <NavItem eventKey="payment/security">
+                            <NavText>
+                                Security
+                            </NavText>
+                        </NavItem>
+                        <NavItem eventKey="payment/penalty">
+                            <NavText>
+                                Penalty
+                            </NavText>
+                        </NavItem>
+                    </NavItem>
+                            
+                    {/* <NavItem eventKey="notices">
+                        <NavIcon>
+                            <i className="fa fa-fw fa-bell" style={{ fontSize: '1.75em',color:'red', }} />
                         </NavIcon>
                         <NavText>
                             Notices
                         </NavText>
+                    </NavItem> */}
+
+
+                    <NavItem eventKey = "notices" >
+                        <NavIcon>
+                            <i className="fa fa-fw fa-bell" style={{ fontSize: '1.75em',color:'red', }} />
+                        </NavIcon>
+                        <NavText>
+                            Notices
+                        </NavText>
+                        <NavItem eventKey="notices/admin">
+                            <NavText>
+                                From Admin
+                            </NavText>
+                        </NavItem>
+                        <NavItem eventKey="notices/exit">
+                            <NavText>
+                                Exit Notice
+                            </NavText>
+                        </NavItem>
                     </NavItem>
+                            
+
+
+
+
+
                     <NavItem eventKey="policy">
                         <NavIcon>
-                            <i className="fa fa-fw fa-briefcase" style={{ fontSize: '1.75em' }} />
+                            <i className="fa fa-fw fa-briefcase" style={{ fontSize: '1.75em',color:'red', }} />
                         </NavIcon>
                         <NavText>
                             Policy
@@ -103,7 +168,7 @@ export default class Account extends Component {
                     </NavItem>
                     <NavItem eventKey="reviews">
                         <NavIcon>
-                            <i className="fa fa-fw fa-star" style={{ fontSize: '1.75em' }} />
+                            <i className="fa fa-fw fa-star" style={{ fontSize: '1.75em',color:'red', }} />
                         </NavIcon>
                         <NavText>
                             Reviews
@@ -111,7 +176,7 @@ export default class Account extends Component {
                     </NavItem>
                     <NavItem eventKey="charts">
                         <NavIcon>
-                            <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
+                            <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em',color:'red', }} />
                         </NavIcon>
                         <NavText>
                             Charts
@@ -129,7 +194,7 @@ export default class Account extends Component {
                     </NavItem>
                     <NavItem eventKey="Logout">
                         <NavIcon>
-                            <i className="fa fa-fw fa-sign-out" style={{ fontSize: '1.75em' }} />
+                            <i className="fa fa-fw fa-sign-out" style={{ fontSize: '1.75em',color:'red', }} />
                         </NavIcon>
                         <NavText>
                             Logout
