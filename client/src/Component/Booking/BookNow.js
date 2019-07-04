@@ -7,15 +7,16 @@ class BookNow extends Component {
     super();
     this.handleChange = this.handleChange.bind(this);
   }
-  state = { open: false,value:0,data:''}
+  state = { open: false,value:0,data:[]}
 
   show = dimmer => () => {
+
             this.setState({ dimmer, open: true})
   }
     
   
   closeAll = (event) => {
-    this.setState({ open: false, otherOpen: false, checked: false, mob: '', checklen: false,value:0 })
+    this.setState({ open: false, otherOpen: false, checked: false, mob: '', checklen: false,value:0,data:[] })
   }
 
    handleChange = (e) => {
@@ -35,12 +36,13 @@ class BookNow extends Component {
       this.setState({data:res.data});
 
       console.log(this.state.data);
-    } )
-    // .catch(error =>{
-    //   console.log(error);
-    // }).then(() => {
-    //   //
-    // });
+     
+    })
+    .catch(error =>{
+      console.log(error);
+    }).then(() => {
+      
+    });
 
 
 
@@ -50,6 +52,9 @@ class BookNow extends Component {
   
   render() {
       const { open, dimmer } = this.state;
+      const items = this.state.data.map((item, key) =>
+        <li key={item.roomNo}>{item.roomNo}</li>
+    );
     return (
       <div>
      
@@ -98,7 +103,7 @@ class BookNow extends Component {
 
             </Modal.Content>
             {!this.state.data?
-            null:<p>data received</p>}
+            null:<ul>{items}</ul>}
             <Modal.Actions>
                 <br/>
                 <Button color='red' onClick={this.closeAll}>
