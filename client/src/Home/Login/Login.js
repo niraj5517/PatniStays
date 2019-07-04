@@ -95,6 +95,7 @@ class Login extends Component {
                     <Checkbox label='I agree to the Terms and Conditions' />
                     {/* <label for="checkboxTick">I agree to the Terms and Conditions.</label> */}
                     </div>
+              disabled={!this.state.checked }
                 </div>
                 </div>
                 {/* <button type="submit" className="ui button">Submit</button> */}
