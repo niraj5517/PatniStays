@@ -7,7 +7,7 @@ class BookNow extends Component {
     super();
     this.handleChange = this.handleChange.bind(this);
   }
-  state = { open: false,value:0}
+  state = { open: false,value:0,data:''}
 
   show = dimmer => () => {
             this.setState({ dimmer, open: true})
@@ -30,7 +30,11 @@ class BookNow extends Component {
     }
     ).then( res =>{
       console.log('working in BookNow file '+ this.state.value);
-      console.log(res.data);
+
+      // console.log(res.data);
+      this.setState({data:res.data});
+
+      console.log(this.state.data);
     } )
     // .catch(error =>{
     //   console.log(error);
@@ -93,7 +97,8 @@ class BookNow extends Component {
                         
 
             </Modal.Content>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque similique explicabo nulla, laboriosam odit adipisci a harum odio error quia veritatis, eius dolorum numquam magni? Corrupti ab autem perspiciatis quam?</p>
+            {!this.state.data?
+            null:<p>data received</p>}
             <Modal.Actions>
                 <br/>
                 <Button color='red' onClick={this.closeAll}>

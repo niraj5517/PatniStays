@@ -9,31 +9,32 @@ router.get('/', function (req, res) {
    
    let beds =req.query.beds;
    console.log('booknow in router get '+ beds);
-   res.send('from booknow.js ' + beds);
+//    res.send('from booknow.js ' + beds);
   // var number=req.body.value;
 
 console.log('moving forward towards query ');
 
 // var q=`select customerPassword from CustomerInfo where customerMOB='${number}'`;
-
+  var  q=`SELECT * FROM rooms WHERE capacity = ${beds}`;
 // let object={bool:true,password:""};
 
-// connection.query(q, function (err, result) {
-//     if (err) { console.log('gfds'); throw err;}
-//     console.log('number='+result.length+'\n');
-//     // res.end('done');
-//     console.log(result);
-//     if(result.length)
-//    { console.log('found'+result);
+connection.query(q, function (err, result) {
+    if (err) { console.log('gfds'); throw err;}
+    console.log('number='+result.length+'\n');
+    // res.end('done');
+    console.log(result);
+    if(result.length){ 
+        console.log('found '+result[0].roomNo);
+        console.log('reached here');
 //    object.password='niraj';
-//     res.send(object); 
-// }
-//     else {
-//          console.log('not founf');
-//          object.bool=false;
-//        res.send(object);}
+    res.send(result); 
+}
+    else {
+         console.log('not founf');
+         object.bool=false;
+       res.send(object);}
  
-//   });
+  });
 
 
   })
