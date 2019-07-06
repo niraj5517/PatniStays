@@ -3,6 +3,9 @@ import DropdownExampleSelection from './Dropdown';
 import  { Navbar, Nav}  from 'react-bootstrap';
 import { Sidebar } from 'semantic-ui-react';
 import Login from '../../Home/Login/Login';
+// import logo from './logo.png'
+// import logo2 from './logo2.png';
+import logoWhite2 from './logoWhite2.png';
 
 
 export default class Header extends Component {
@@ -12,9 +15,9 @@ export default class Header extends Component {
                 <nav style={{zIndex:'1024'}}>
                     
                     <Navbar style={{background:'linear-gradient(360deg,#d11450,#df293a)',position: 'relative',zIndex:'1024'}} >
-                        < img src = ""
-                        alt = "m" width="25px"/>
-                        <Navbar.Brand to="/">Navbar</Navbar.Brand>
+                        {/* <img src = ""
+                        alt = "m" width=""/> */}
+                        <Navbar.Brand to="/"><img src={logoWhite2} width="150px" alt="logo"/></Navbar.Brand>
                         
                         <DropdownExampleSelection />
                         <Nav className="ml-auto">
