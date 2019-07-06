@@ -22,8 +22,11 @@ export default class Header extends Component {
                         <DropdownExampleSelection />
                         <Nav className="ml-auto">
                         {/* <Nav.Link href="#home"><i className="fa fa-home">1</i></Nav.Link> */}
-                        {/* <Nav.Link href="#features"><i className="fa fa-home" style={{fontSize:'40px',}}></i></Nav.Link> */}
-                        <Nav.Link href=""><Login/></Nav.Link>
+                        {/* <Nav.Link href="#features"><i className="fa fa-home" style={{fontSize:'40px',}}></i></Nav.Link> 
+//                         <Nav.Link href=""><Login/></Nav.Link>*/}
+            {(window.localStorage.getItem('user'))?
+                    <h2><Link to={'/account'}>{window.localStorage.getItem('user')}</Link></h2>: <Nav.Link href=""><Login/></Nav.Link>}
+                        
                         </Nav>
                        
                     </Navbar>
