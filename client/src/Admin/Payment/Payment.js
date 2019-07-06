@@ -4,8 +4,6 @@ class Payment extends Component {
 
     constructor() {
         super();
-        this.changePenalty = this.changePenalty.bind(this);
-        this.changeDiscount = this.changeDiscount.bind(this);
 
         this.state = {
             constBill: 14000,
@@ -58,11 +56,25 @@ class Payment extends Component {
     }
 
     changePenalty = (id, e) => {
+        const index = this.state.arr.findIndex(item => {
+            return item.bedId === id;
+        })
+        console.log(index);
+
+        this.state.arr[index].penalty = e.target.value;
+        console.log(e.target.value);
         
      }
 
 
     changeDiscount = (id, e) => {
+        const index = this.state.arr.findIndex(item => {
+            return item.bedId === id;
+        })
+        console.log(index);
+
+        this.state.arr[index].discount = e.target.value;
+        console.log(e.target.value);
         
     }
     
@@ -104,8 +116,8 @@ class Payment extends Component {
                                             generatedBill={this.generateBill.bind(this,index)}
                                             changedElectricity={this.changeElectricity.bind(this, item.bedId)}
                                             disabling={this.state.arr[index].disable === 0? false: true}
-                                            // changePenalty={this.changePenalty(item.bedId)}
-                                            // changeDiscount={this.changeDiscount(item.bedId)}
+                                            changePenalty={this.changePenalty.bind(this,item.bedId)}
+                                            changeDiscount={this.changeDiscount.bind(this,item.bedId)}
                                         ></Bill>);
                                     })}
                                 
