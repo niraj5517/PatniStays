@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import Bill from './Bill';
-<<<<<<< HEAD
 // import { MonthlyBill } from '../Helper';
-=======
 import { MonthlyBill } from '../Helper';
->>>>>>> 774bec8cbca75359fba254bc51241ad26c082d3b
 class Payment extends Component {
 
     constructor() {
@@ -57,21 +54,6 @@ class Payment extends Component {
         }
         
     }
-<<<<<<< HEAD
-
-     generateBill = (object) => {
-        console.log('Object recieved from Bill.js '+ object);
-        let total=object.total;
-        let index=object.index;
-        let elec = object.elec;
-        let penalty = object.penalty;
-        let disc = object.discount;
-
-        let bedId = object.bedId;
-        let email = object.email;
-        console.log(total + ' ' + index + ' ' + elec + ' ' + penalty + ' ' + disc + ' ' + bedId + ' ' + email);
-        
-=======
     
      
 
@@ -138,7 +120,6 @@ class Payment extends Component {
 
 
 
->>>>>>> 774bec8cbca75359fba254bc51241ad26c082d3b
     }
 
     render() {
@@ -172,16 +153,12 @@ class Payment extends Component {
                                             name={item.residentName}
                                             email={item.email}
                                             generatedBill={this.generateBill}
-<<<<<<< HEAD
-                                            ></Bill>);
-=======
                                             changedElectricity={this.changeElectricity.bind(this, item.bedId)}
                                             // totalB = {this.totalBill.bind(this)}
                                             // disabling={this.state.arr[index].disable === 0? false: true}
                                             changePenalty={this.changePenalty.bind(this,item.bedId)}
                                             changeDiscount={this.changeDiscount.bind(this,item.bedId)}
                                         ></Bill>);
->>>>>>> 774bec8cbca75359fba254bc51241ad26c082d3b
                                     })}
                                 
                         

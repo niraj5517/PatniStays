@@ -31,18 +31,9 @@ import logoWhite2 from './logoWhite2.png';
                         
                         <DropdownExampleSelection />
                         <Nav className="ml-auto">
-<<<<<<< HEAD
                        
                     {(window.localStorage.getItem('user'))?<h2><Link to={'/account'}>{window.localStorage.getItem('user')}</Link></h2>:<Nav.Link href=""><Login/></Nav.Link>}
                     {/* </Nav.Link>} */}
-=======
-                        {/* <Nav.Link href="#home"><i className="fa fa-home">1</i></Nav.Link> */}
-                        {/* <Nav.Link href="#features"><i className="fa fa-home" style={{fontSize:'40px',}}></i></Nav.Link> 
-//                         <Nav.Link href=""><Login/></Nav.Link>*/}
-            {(window.localStorage.getItem('user'))?
-                    <h2><Link to={'/account'}>{window.localStorage.getItem('user')}</Link></h2>: <Nav.Link href=""><Login/></Nav.Link>}
-                        
->>>>>>> 774bec8cbca75359fba254bc51241ad26c082d3b
                         </Nav>
                        
                     </Navbar>
