@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import Bill from './Bill';
+<<<<<<< HEAD
 // import { MonthlyBill } from '../Helper';
+=======
+import { MonthlyBill } from '../Helper';
+>>>>>>> 774bec8cbca75359fba254bc51241ad26c082d3b
 class Payment extends Component {
 
     constructor() {
@@ -53,6 +57,7 @@ class Payment extends Component {
         }
         
     }
+<<<<<<< HEAD
 
      generateBill = (object) => {
         console.log('Object recieved from Bill.js '+ object);
@@ -66,6 +71,74 @@ class Payment extends Component {
         let email = object.email;
         console.log(total + ' ' + index + ' ' + elec + ' ' + penalty + ' ' + disc + ' ' + bedId + ' ' + email);
         
+=======
+    
+     
+
+    changeElectricity = (id, e) => {
+        console.log(id);
+        const index = this.state.arr.findIndex(item => {
+            return item.bedId === id;
+        })
+        // eslint-disable-next-line
+        this.state.arr[index].electricity = e.target.value;
+
+        // let elec = parseFloat(this.state.arr[index].electricity);
+        // total = parseFloat(this.state.arr[index].total);
+        // total = total + elec;
+        
+
+
+        
+    }
+
+    changePenalty = (id, e) => {
+        const index = this.state.arr.findIndex(item => {
+            return item.bedId === id;
+        })
+        console.log(index);
+        // eslint-disable-next-line
+        this.state.arr[index].penalty = e.target.value;
+        console.log(e.target.value);
+        
+     }
+
+
+    changeDiscount = (id, e) => {
+        const index = this.state.arr.findIndex(item => {
+            return item.bedId === id;
+        })
+        console.log(index);
+        // eslint-disable-next-line
+        this.state.arr[index].discount = e.target.value;
+        console.log(e.target.value);
+        
+    }
+    // totalB(e) {
+        
+    // }
+    
+    generateBill = (object) => {
+        let total=object.total;
+        let index=object.index;
+        let elec=object.elec;
+        console.log(total+''+index);
+//         eslint-disable-next-line
+        this.state.arr[index].disable = 1;
+        this.state.arr[index].electricity = elec;
+        console.log(this.state.arr[index]);
+
+        const Bill = MonthlyBill(this.state.arr[index].electricity, this.state.arr[index].penalty, this.state.arr[index].discount);
+        console.log(Bill);
+
+        // eslint-disable-next-line
+        this.state.arr[index].total = Bill;
+
+
+
+
+
+>>>>>>> 774bec8cbca75359fba254bc51241ad26c082d3b
     }
 
     render() {
@@ -99,7 +172,16 @@ class Payment extends Component {
                                             name={item.residentName}
                                             email={item.email}
                                             generatedBill={this.generateBill}
+<<<<<<< HEAD
                                             ></Bill>);
+=======
+                                            changedElectricity={this.changeElectricity.bind(this, item.bedId)}
+                                            // totalB = {this.totalBill.bind(this)}
+                                            // disabling={this.state.arr[index].disable === 0? false: true}
+                                            changePenalty={this.changePenalty.bind(this,item.bedId)}
+                                            changeDiscount={this.changeDiscount.bind(this,item.bedId)}
+                                        ></Bill>);
+>>>>>>> 774bec8cbca75359fba254bc51241ad26c082d3b
                                     })}
                                 
                         

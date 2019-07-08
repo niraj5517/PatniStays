@@ -20,6 +20,7 @@ export default class Bill extends React.Component {
         console.log(this.state.flag);
     }
     
+<<<<<<< HEAD
 calculateElec=(e)=>{
     let electricity=parseFloat(e.target.value);
     let total=parseFloat(this.props.rent)+parseFloat(this.props.food)+parseFloat(e.target.value);
@@ -56,6 +57,20 @@ calculateElec=(e)=>{
             flag:1,
         })
         let object={total:this.state.total,index:this.props.ind,elec:this.state.electricity, penalty:this.state.penalty,discount:this.state.discount,email:this.props.email,bedId:this.props.bedId};
+=======
+calculate=(e)=>{
+    let electricity=parseFloat(e.target.value);
+    let total=parseFloat(this.props.rent)+parseFloat(this.props.food)+parseFloat(e.target.value);
+this.setState({total:total,value:total,electricity:electricity,})
+
+}
+
+    bill=(e)=> {
+        this.setState({
+            flag:1,
+        })
+        let object={total:this.state.total,index:this.props.ind,elec:this.state.electricity};
+>>>>>>> 774bec8cbca75359fba254bc51241ad26c082d3b
         this.props.generatedBill(object);
     }
     
@@ -70,6 +85,7 @@ calculateElec=(e)=>{
                 <td >{this.props.food}</td>
                 <td ><div className="ui input"><input disabled={this.state.flag === 1 ? true : false} min="0" 
                 // onChange={this.props.changedElectricity} 
+<<<<<<< HEAD
                 onChange={this.calculateElec} type="number" name="electricity" placeholder="Electricity Bill" /></div></td>
                 
                 <td ><div className="ui input"><input disabled={this.state.flag===1?true:false}  min="0"
@@ -78,6 +94,16 @@ calculateElec=(e)=>{
                     placeholder="Penalty" /></div></td>
                 <td ><div className="ui input"><input  disabled={this.state.flag===1?true:false}  min="0"
                     onChange={this.calculateDiscount}
+=======
+                onChange={this.calculate} type="number" name="electricity" placeholder="Electricity Bill" /></div></td>
+                
+                <td ><div className="ui input"><input disabled={this.state.flag===1?true:false}  min="0"
+                    onChange={this.props.changePenalty}
+                    type="number" name="penalty"
+                    placeholder="Penalty" /></div></td>
+                <td ><div className="ui input"><input  disabled={this.state.flag===1?true:false}  min="0"
+                    onChange={this.props.changeDiscount}
+>>>>>>> 774bec8cbca75359fba254bc51241ad26c082d3b
                     type="number" name="discount"
                     placeholder="Discount" /></div></td>
                 <td>{this.state.total} </td>
