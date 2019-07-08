@@ -31,8 +31,8 @@ class ReportProblems extends Component {
         return (
             < div className = "col-md-12" >
 
-                {this.state.ifIssue==='0'? <Panels />
-                :null}
+                {/* {this.state.ifIssue==='0'? <Panels />
+                :null} */}
                
                 <br/>
                 {/* Report  Problems Component */}

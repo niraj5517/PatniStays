@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Button ,Image, Modal, Checkbox } from 'semantic-ui-react';
+import { Button ,Image, Modal, Checkbox, TransitionablePortal } from 'semantic-ui-react';
 import SignIn from './SignIn';
 import axios from 'axios';
 import SignUp from './SignUp';
-import {valPhone} from './../../Validate.js';
+import {valPhone} from './../../Validate.js'; 
 
 class Login extends Component {
   
@@ -113,8 +113,10 @@ able=()=>{
         <i style={{fontSize:'40px',color:'white'}} onClick={this.show('blurring')} className="fa fa-fw fa-sign-in" aria-hidden="true"></i>
             
         <form className="ui form">
+        <TransitionablePortal open={this.state.open}  transition={{ animation:'scale', duration: 800 }}> 
         <Modal style={{width:'74%',height:'75%',margin:'0 13%',overflowY:'auto'}} dimmer={dimmer} open={open} onClose={this.closeAll} >
-          <Modal.Header>Login / Sign Up <span style={{float:"right",cursor:'pointer',}}><i onClick={this.closeAll} className="fa fa-times" aria-hidden="true"></i></span> </Modal.Header>
+          <Modal.Header>Login / Sign Up <span style={{float:"right",cursor:'pointer',}}>
+            <i onClick={this.closeAll} className="fa fa-times" aria-hidden="true"></i></span> </Modal.Header>
           
           <Modal.Content image>
             <Image wrapped size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' />
@@ -124,7 +126,8 @@ able=()=>{
                 <div className="field">
                     <label>Enter your mobile number:</label>
                     <input type="tel" pattern="[1-9]{1}[0-9]{9}" value={this.state.mob} 
-                    onChange={this.handleMobile} maxlength="10" className="form-control" placeholder="Mobile Number" 
+                    onChange={this.handleMobile} maxLength="10" className="form-control" 
+                    placeholder="Mobile Number" 
                     required />
                     {(!this.state.MobError||!this.state.checklen)?
                     <div className="alert alert-danger" role="alert">
@@ -162,6 +165,7 @@ able=()=>{
             />
           </Modal.Actions>
         </Modal>
+        </TransitionablePortal>
             </form>
             
             <form className="ui form">

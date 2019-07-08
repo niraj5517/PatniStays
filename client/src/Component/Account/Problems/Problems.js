@@ -1,21 +1,23 @@
-import React from 'react';
+        import React from 'react';
 // import { Dropdown, Button, ButtonGroup } from 'react-bootstrap';
 
 class Problems extends React.Component {
-    state={
-        probDom: '',
-        probSpec: '',
-        probIssue:'',
-    }
+    
     constructor() {
         super();
-        this.handleProbDom = this.handleProbDom.bind(this);
+        this.state={
+            probDom: '',
+            probSpec: '',
+            probIssue:'',
+        }
+        // this.handleProbDom = this.handleProbDom.bind(this);
         this.handleProbSpec = this.handleProbSpec.bind(this);
         this.handleProbX = this.handleProbX.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleProbDom(event) {
+    handleProbDom =(event) => {
         console.log(event.target.value);
+        console.log('problem is related to');
         this.setState({
             probDom: event.target.value,
             
@@ -51,14 +53,14 @@ class Problems extends React.Component {
                     <br/>
                     <h1>Problem Related To:</h1>
                                 
-                       <select className="form-control" name="idType" id="idType"> 
-                            <option className="select-option" onClick={this.handleProbDom}  value="">Select</option>
-                           <option className="select-option" onClick={this.handleProbDom}  value="Food" >Food</option>
-                            <option className="select-option" onClick={this.handleProbDom} value="Repair & Maintenance">Repair & Maintenance</option>
+                       <select className="form-control" onClick={this.handleProbDom.bind(this)} name="idType" id="idType"> 
+                            <option className="select-option" onClick={this.handleProbDom.bind(this)}  value="">Select</option>
+                           <option className="select-option" onClick={this.handleProbDom.bind(this)}  value="Food" >Food</option>
+                            <option className="select-option" onClick={this.handleProbDom.bind(this)} value="Repair & Maintenance">Repair & Maintenance</option>
                             {/* <option className="select-option" onClick={this.handleProbDom}  value="Guest Stay">Guest Stay</option> */}
-                            <option className="select-option" onClick={this.handleProbDom} value="Notice" >Notice</option>
-                            <option className="select-option" onClick={this.handleProbDom} value="Payment" >Payment</option>
-                            <option className="select-option" onClick={this.handleProbDom} value="Service Request & Complaints" >Service Request & Complaints</option>
+                            <option className="select-option" onClick={this.handleProbDom.bind(this)} value="Notice" >Notice</option>
+                            <option className="select-option" onClick={this.handleProbDom.bind(this)} value="Payment" >Payment</option>
+                            <option className="select-option" onClick={this.handleProbDom.bind(this)} value="Service Request & Complaints" >Service Request & Complaints</option>
                         </select>
                         
 
@@ -81,7 +83,7 @@ class Problems extends React.Component {
 
                     {this.state.probDom === 'Food' ? 
                     
-                    <select className="form-control" name="idType" id="idType"> 
+                    <select className="form-control" onClick={this.handleProbSpec} name="idType" id="idType"> 
                             {/* <option className="select-option" disabled></option> */}
                             <option className="select-option" onClick={this.handleProbSpec}  value="">Select</option>
                             <option className="select-option" onClick={this.handleProbSpec} value="Quality not appropriate">Quantity not appropriate</option>
@@ -97,7 +99,7 @@ class Problems extends React.Component {
                     {
                         this.state.probDom === 'Repair & Maintenance' ?
                     
-                    <select className="form-control" name="idType" id="idType"> 
+                    <select className="form-control" onClick={this.handleProbSpec} name="idType" id="idType"> 
                             {/* <option className="select-option" disabled></option> */}
                             <option className="select-option" onClick={this.handleProbSpec}  value="">Select</option>
                             <option className="select-option" onClick={this.handleProbSpec} value="Bathroom">Bathroom</option>
@@ -112,7 +114,7 @@ class Problems extends React.Component {
                         {
                         this.state.probDom === 'Notice' ?
                     
-                    <select className="form-control" name="idType" id="idType">     
+                    <select className="form-control" onClick={this.handleProbSpec} name="idType" id="idType">     
                             <option className="select-option" onClick={this.handleProbSpec}  value="">Select</option>
                             <option className="select-option" onClick={this.handleProbSpec} value="Invoice not Provided">Invoice not Provided</option>
                             <option className="select-option" onClick={this.handleProbSpec}  value="Miscalculation/Clarifications needed on Notice Charges" >Miscalculation/Clarifications needed on Notice Charges</option>
@@ -127,7 +129,7 @@ class Problems extends React.Component {
                     {
                         this.state.probDom === 'Payment' ?
                     
-                    <select className="form-control" name="idType" id="idType">     
+                    <select className="form-control" name="idType" onClick={this.handleProbSpec} id="idType">     
                             <option className="select-option" onClick={this.handleProbSpec}  value="">Select</option>
                             <option className="select-option" onClick={this.handleProbSpec} value="Deposit/Advance Payment">Deposit/Advance Payment</option>
                             <option className="select-option" onClick={this.handleProbSpec}  value="Deposit/Advance Refund" >Deposit/Advance Refund</option>
@@ -144,7 +146,7 @@ class Problems extends React.Component {
                     {
                         this.state.probDom === 'Service Request & Complaints' ?
                     
-                    <select className="form-control" name="idType" id="idType">     
+                    <select className="form-control" name="idType" onClick={this.handleProbSpec} id="idType">     
                             <option className="select-option" onClick={this.handleProbSpec}  value="">Select</option>
                             <option className="select-option" onClick={this.handleProbSpec} value="Agreement Related">Agreement Related</option>
                             <option className="select-option" onClick={this.handleProbSpec}  value="Room/Property change" >Room/Property change</option>

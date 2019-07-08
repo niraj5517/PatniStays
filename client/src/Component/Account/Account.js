@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import Profile from './profile/Profile';
-// import Header from '../Header/Header';
+ import {default as Helium} from '../Header/Header';
 import AccHome from './AccHome/AccHome';
 import Review from './Review/Review';
-import Problems from './Problems/Problems';
+import ReportProblems from './Problems/Problems';
+import Logout from './Logout/Logout';
+import NavLink from 'react-bootstrap/NavLink';
 
 
 export default class Account extends Component {
@@ -19,6 +21,7 @@ export default class Account extends Component {
     render() {
         return (
             <div>
+                <Helium/>
                 <div style={{ paddingRight: '20px', }}>
                     
                 
@@ -28,8 +31,13 @@ export default class Account extends Component {
                     <SideNav style={{background:'white',}}
                         
                         onSelect={(selected) => {
+                            console.log(selected);
                             // Add your code here
-                                    console.log(selected);
+                            if(selected=='Logout')
+                                   { console.log(selected+'as');
+                                
+                                   localStorage.removeItem('user');
+                                   this.props.history.push("/")  }
                                     this.setState({
                                         option:selected,
                                     })
@@ -208,7 +216,10 @@ export default class Account extends Component {
                      
                     {this.state.option === 'home/profile' ? <Profile /> : null}
                     {this.state.option === 'reviews' ? <Review /> : null}
-                    {this.state.option === 'problems' ? <Problems/> : null}
+
+                    {this.state.option === 'problems' ? <ReportProblems/> : null}
+                    
+                    {this.state.option === 'Logout' ? <Logout/> : null}
                     {/* 
                     {this.state.option === 'payment' ? < /> : null}
                     {this.state.option === 'notices' ? < /> : null}

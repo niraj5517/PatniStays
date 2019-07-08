@@ -7,7 +7,8 @@ var cors = require('cors')
 
 var users = require('./routes/users');
 var signup = require('./routes/signup');
-var booknow = require('./routes/booknow');
+var scheduleVisits=require('./routes/schedulevisits');
+var bookNow=require('./routes/bookNow')
 
 // database config file to set connection
 // var connection = require('./dbconfig');
@@ -16,11 +17,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
  // parse application/json
 app.use(bodyParser.json());
 
-app.use(cors())
+app.use(cors());
 
 // app.use('/users',users);
 app.use('/mob',signup);
-app.use('/booknow',booknow);
+app.use('/scheduleVisits',scheduleVisits);
+app.use('/bookNow',bookNow);
 
 // app.get('/users',(req,res)=>{
 

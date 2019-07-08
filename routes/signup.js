@@ -12,18 +12,18 @@ router.get('/', function (req, res) {
 
 console.log('hell87o '+ number);
 
-var q=`select customerPassword from CustomerInfo where customerMOB='${number}'`;
+var q=`select customerPassword from customerInfo where customerMOB='${number}'`;
 
 let object={bool:true,password:""};
 
 connection.query(q, function (err, result) {
-    if (err) { console.log('gfds'); throw err;}
+    if (err) { console.log('gfds'); res.end();}
     console.log('number='+result.length+'\n');
     // res.end('done');
     console.log(result);
     if(result.length)
    { console.log('found'+result);
-   object.password='niraj';
+   object.password=result[0].customerPassword; 
     res.send(object); 
 }
     else {
@@ -39,28 +39,26 @@ connection.query(q, function (err, result) {
   router.post('/signup', function (req, res) {
    
     let number =req.body.number;
-    let name=req.body.name;
+    let email=req.body.email;
     let password=req.body.password;
-
    
-     // var name=req.body.value;
- //  var name ='0';
- console.log('hello '+number);
+ console.log('hello '+number+' '+email+' '+password);
 
- var q=`insert into customerInfo(customerID,customerMOB,customerName,customerPassword) values('','${number}','${name}','${password}')`;
+ var q=`insert into customerInfo(customerMOB,customerEmail,customerPassword) values('${number}','${email}','${password}')`;
  
- 
+ let object={bool:true,insertId:""};
  
  connection.query(q, function (err, result) {
-     if (err) { console.log('gfds'); throw err;}
-     console.log('number='+result.length+'\n');
+     if (err) {object.bool=false;
+        console.log('gfds');res.send(object); }
+     
      // res.end('done');
-     console.log(result);
-     if(result.length)
-    { console.log('found'+result);
-     // res.send(result); 
+     else
+     {console.log(result);console.log('number='+result.insertId+'\n');
+     object.insertId=result.insertId;
+     res.send(object);
+
  }
-     else {console.log('not founf');res.send('not');}
    });
  
  

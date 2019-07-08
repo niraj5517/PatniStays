@@ -1,6 +1,7 @@
 
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
+import {default as Helium} from '../Component/Header/Header';
 import {
     Button,
     Container,
@@ -204,8 +205,14 @@ ResponsiveContainer.propTypes = {
   children: PropTypes.node,
 }
 
-const Home = () => (
+class Home extends Component{
+
+render(){
+return(
+  <div>
+  <Helium/>
   <ResponsiveContainer>
+   
     <Segment style={{ padding: '8em 0em' }} vertical>
       <Grid container stackable verticalAlign='middle'>
         <Grid.Row>
@@ -325,6 +332,7 @@ const Home = () => (
         </Grid>
       </Container>
     </Segment>
-  </ResponsiveContainer>
-)
+  </ResponsiveContainer></div>
+)}
+}
 export default Home
